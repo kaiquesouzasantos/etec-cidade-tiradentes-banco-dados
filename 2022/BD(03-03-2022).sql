@@ -83,13 +83,10 @@ SELECT tbAluno.codAluno AS CODIGO FROM tbAluno, tbMatricula, tbTurma
 WHERE tbMatricula.codAluno = tbAluno.codAluno AND tbTurma.codTurma = tbMatricula.codTurma AND tbTurma.codCurso = 1;
 
 -- Exercicio 08
-SELECT tbAluno.codAluno AS CODIGO FROM tbAluno, tbMatricula, tbTurma 
-WHERE tbMatricula.codAluno = tbAluno.codAluno AND tbMatricula.codTurma = tbTurma.codTurma AND tbTurma.nomeTurma = '1AA';
+SELECT codAluno, codTurma FROM tbMatricula WHERE codTurma = 3;
 
 -- Exercicio 09
-SELECT tbAluno.codAluno AS CODIGO, tbAluno.nomeAluno AS NOME, tbAluno.rgAluno AS RG, tbAluno.dataNascAluno AS NASCIMENTO, tbAluno.naturalidadeAluno AS NATURALIDADE, tbMatricula.dataMatricula AS DATA_DE_MATRICULA, tbTurma.nomeTurma AS TURMA, tbTurma.horarioTurma AS HORARIO, tbCurso.nomeCurso FROM tbAluno, tbMatricula, tbTurma, tbCurso 
-WHERE tbMatricula.codAluno = tbAluno.codAluno AND tbMatricula.codTurma = tbTurma.codTurma AND tbCurso.codCurso = tbTurma.codCurso;
+SELECT * FROM tbAluno;
 
 -- Exercicio 10
-SELECT tbTurma.codTurma AS CODIGO, tbTurma.nomeTurma AS NOME, tbTurma.horarioTurma AS HORARIO, tbCurso.nomeCurso AS CURSO FROM tbTurma, tbCurso 
-WHERE tbCurso.codCurso = tbTurma.codCurso;
+SELECT * FROM tbTurma;
