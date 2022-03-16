@@ -83,7 +83,7 @@ SELECT tbAluno.codAluno AS CODIGO FROM tbAluno, tbMatricula, tbTurma
 WHERE tbMatricula.codAluno = tbAluno.codAluno AND tbTurma.codTurma = tbMatricula.codTurma AND tbTurma.codCurso = 1;
 
 -- Exercicio 08
-SELECT codAluno, codTurma FROM tbMatricula WHERE codTurma = 3;
+SELECT codAluno AS ID_ALUNO FROM tbMatricula WHERE codTurma = 3;
 
 -- Exercicio 09
 SELECT * FROM tbAluno;
