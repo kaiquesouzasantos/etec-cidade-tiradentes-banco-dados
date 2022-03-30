@@ -49,8 +49,8 @@ INSERT INTO tbAluno(nomeAluno, dataNascAluno, rgAluno, naturalidadeAluno) VALUES
 GO
 
 INSERT INTO tbCurso(nomeCurso, cargaHorariaCurso, valorCurso) VALUES
-	('Inglês', 2000, 356)
-	,('Alemão', 3000, 478)
+	('InglÃªs', 2000, 356)
+	,('AlemÃ£o', 3000, 478)
 	,('Espanhol', 4000, 500);
 GO
 
