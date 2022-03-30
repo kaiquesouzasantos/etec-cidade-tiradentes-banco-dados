@@ -1,4 +1,4 @@
-﻿USE bdEscolaIdiomas
+﻿USE dbEscolaIdiomas
 GO
 
  -- Exercicio 01 
