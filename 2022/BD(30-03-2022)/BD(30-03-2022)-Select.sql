@@ -18,6 +18,12 @@ LEFT JOIN tbProduto ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
 SELECT tbFornecedor.nomeFornecedor AS 'FORNECEDOR', tbProduto.descricaoProduto AS 'DESC' FROM tbProduto 
 RIGHT JOIN tbFornecedor ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
 
+SELECT tbFornecedor.nomeFornecedor AS 'FORNECEDOR', tbProduto.descricaoProduto AS 'DESC' FROM tbProduto 
+LEFT OUTER JOIN tbFornecedor ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
+
+SELECT tbFornecedor.nomeFornecedor AS 'FORNECEDOR', tbProduto.descricaoProduto AS 'DESC' FROM tbProduto 
+RIGHT OUTER JOIN tbFornecedor ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
+
 -- exercicio 04
 INSERT INTO tbProduto(descricaoProduto, valorProduto, quantidadeProduto)
 VALUES 
@@ -30,7 +36,7 @@ SELECT tbFornecedor.nomeFornecedor AS 'FORNECEDOR',  tbProduto.descricaoProduto 
 FULL JOIN tbProduto ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
 
 SELECT tbProduto.descricaoProduto AS 'PRODUTO', tbFornecedor.nomeFornecedor AS 'FORNECEDOR' FROM tbProduto
-FULL JOIN tbFornecedor ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
+CROSS JOIN tbFornecedor 
 
 -- exercicio 06
 SELECT tbFornecedor.nomeFornecedor, tbProduto.descricaoProduto FROM tbProduto 
