@@ -2,7 +2,7 @@ USE bdEscolaIdiomas
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- exercicio 01
--- Criar uma consulta que retorne o nome e o preço dos cursos que custem abaixo do valor médio.
+-- Criar uma consulta que retorne o nome e o preÃ§o dos cursos que custem abaixo do valor mÃ©dio.
 
 SELECT nomeCurso AS 'CURSO', valorCurso AS 'VALOR' FROM tbCurso
 WHERE valorCurso < (SELECT AVG(valorCurso) FROM tbCurso)
@@ -30,7 +30,7 @@ WHERE valorCurso = (SELECT MAX(valorCurso) FROM tbCurso)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- exercicio 05
--- Criar uma consulta que retorne o nome do aluno e o nome do curso, do aluno que fez a última matrícula.
+-- Criar uma consulta que retorne o nome do aluno e o nome do curso, do aluno que fez a Ãºltima matrÃ­cula.
 
 -- com INNER JOIN:
 SELECT nomeAluno AS 'ALUNO', nomeCurso AS 'CURSO' FROM tbAluno
@@ -62,18 +62,18 @@ WHERE tbMatricula.codAluno = tbAluno.codAluno
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- exercicio 07
--- Criar uma consulta que retorne o nome, rg e data de nascimento de todos os alunos que estejam matriculados no curso de inglês.
+-- Criar uma consulta que retorne o nome, rg e data de nascimento de todos os alunos que estejam matriculados no curso de inglÃªs.
 
 -- com INNER JOIN:
 SELECT nomeAluno AS 'ALUNO', rgAluno AS 'RG', dataNascAluno AS 'NASCIMENTO' FROM tbAluno
 INNER JOIN tbMatricula ON tbMatricula.codAluno = tbAluno.codAluno
 INNER JOIN tbTurma ON tbTurma.codTurma = tbMatricula.codTurma
 INNER JOIN tbCurso ON tbCurso.codCurso = tbTurma.codCurso
-WHERE nomeCurso IN (SELECT nomeCurso FROM tbCurso WHERE nomeCurso LIKE 'Inglês')
+WHERE nomeCurso IN (SELECT nomeCurso FROM tbCurso WHERE nomeCurso LIKE 'InglÃªs')
 
 -- sem INNER JOIN:
 SELECT nomeAluno AS 'ALUNO', rgAluno AS 'RG', dataNascAluno AS 'NASCIMENTO' FROM tbAluno, tbCurso, tbMatricula, tbTurma
 WHERE tbMatricula.codAluno = tbAluno.codAluno 
 	AND tbTurma.codTurma = tbMatricula.codTurma 
 	AND tbCurso.codCurso = tbTurma.codCurso
-	AND nomeCurso IN (SELECT nomeCurso FROM tbCurso WHERE nomeCurso LIKE 'Inglês')
+	AND nomeCurso = (SELECT nomeCurso FROM tbCurso WHERE nomeCurso LIKE 'InglÃªs')
