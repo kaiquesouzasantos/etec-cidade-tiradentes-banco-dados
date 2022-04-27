@@ -10,14 +10,14 @@
  INNER JOIN tbCurso ON tbCurso.codCurso = tbTurma.codCurso
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
- -- Exercicio 02
- -- Apresentar a quantidade de alunos matriculados por nome do curso;
+-- Exercicio 02
+-- Apresentar a quantidade de alunos matriculados por nome do curso;
  
- SELECT nomeCurso AS CURSO, COUNT(tbAluno.codAluno) AS QTD_MATRICULADOS FROM tbCurso
- INNER JOIN tbTurma ON tbTurma.codCurso = tbCurso.codCurso
- INNER JOIN tbMatricula ON tbMatricula.codTurma = tbTurma.codTurma
- INNER JOIN tbAluno ON tbAluno.codAluno = tbMatricula.codAluno
- GROUP BY nomeCurso
+SELECT nomeCurso AS CURSO, COUNT(tbAluno.codAluno) AS QTD_MATRICULADOS FROM tbCurso
+INNER JOIN tbTurma ON tbTurma.codCurso = tbCurso.codCurso
+INNER JOIN tbMatricula ON tbMatricula.codTurma = tbTurma.codTurma
+INNER JOIN tbAluno ON tbAluno.codAluno = tbMatricula.codAluno
+GROUP BY nomeCurso
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 03
