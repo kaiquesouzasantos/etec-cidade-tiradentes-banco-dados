@@ -2,7 +2,9 @@
  GO 
  USE bdEscola
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- CREATE'S --
+
 CREATE TABLE tbAluno (
 	codAluno INT PRIMARY KEY IDENTITY(1,1)
 	,nomeAluno VARCHAR(50) NOT NULL
@@ -32,10 +34,12 @@ CREATE TABLE tbMatricula (
 	,codTurma INT FOREIGN KEY REFERENCES tbTurma(codTurma)
 );
 GO
+----------------------------------------------------------------------------------------------------------------------------------------------
  -- INSERT'S --
+ 
 INSERT INTO tbCurso(nomeCurso,cargaHorariaCurso,valorCurso) VALUES
-	('Inglês',2000,'356.00')
-	,('Alemão',3000,'478.00');
+	('InglÃªs',2000,'356.00')
+	,('AlemÃ£o',3000,'478.00');
 GO
 INSERT INTO tbAluno(nomeAluno,dataNascAluno,rgAluno,naturalidadeAluno) VALUES
 	('Paulo Santos', '2000-10-03 00:00:00', '82.292.122-0', 'SP')
@@ -59,34 +63,55 @@ INSERT INTO tbMatricula(dataMatricula, codAluno, codTurma) VALUES
 	,('2015-06-06 00:00:00',5,1)
 	,('2015-05-05 00:00:00',5,3);
 GO
- -- Exercicio 01 
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+-- Exercicio 01 
+ 
 SELECT nomeAluno AS NOME,rgAluno AS RG,dataNascAluno AS NASCIMENTO FROM tbAluno WHERE naturalidadeAluno = 'SP';
 
- -- Exercicio 02
+----------------------------------------------------------------------------------------------------------------------------------------------
+-- Exercicio 02
+ 
 SELECT  nomeAluno AS NOME,rgAluno AS RG FROM tbAluno WHERE nomeAluno LIKE 'P%';
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 03
+
 SELECT nomeCurso AS CURSO FROM tbCurso WHERE cargaHorariaCurso > 2000;
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 04
+
 SELECT nomeAluno AS NOME,rgAluno AS RG FROM tbAluno WHERE nomeAluno LIKE '%Silva%';
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 05
+
 SELECT nomeAluno AS NOME,dataNascAluno AS NASCIMENTO FROM tbAluno WHERE MONTH(dataNascAluno) = 3;
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 06
+
 SELECT tbAluno.codAluno AS CODIGO, tbMatricula.dataMatricula AS DATA_MATRICULA FROM tbAluno, tbMatricula 
 WHERE tbAluno.codAluno = tbMatricula.codAluno AND MONTH(tbMatricula.dataMatricula) = 5;
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 07
+
 SELECT tbAluno.codAluno AS CODIGO FROM tbAluno, tbMatricula, tbTurma 
 WHERE tbMatricula.codAluno = tbAluno.codAluno AND tbTurma.codTurma = tbMatricula.codTurma AND tbTurma.codCurso = 1;
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 08
+
 SELECT codAluno AS ID_ALUNO FROM tbMatricula WHERE codTurma = 3;
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 09
+
 SELECT * FROM tbAluno;
 
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 10
+
 SELECT * FROM tbTurma;
