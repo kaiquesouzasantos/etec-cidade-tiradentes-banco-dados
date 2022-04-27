@@ -28,7 +28,7 @@ codFornecedor INT PRIMARY KEY IDENTITY (1,1)
 ,nomeFornecedor VARCHAR (90)
 ,contatoFornecedor VARCHAR (30)
 );
-
+GO
 CREATE TABLE tbProduto(
 codProduto INT PRIMARY KEY IDENTITY (1,1)
 ,descricaoProduto VARCHAR (90)
@@ -37,7 +37,7 @@ codProduto INT PRIMARY KEY IDENTITY (1,1)
 ,codFabricante INT FOREIGN KEY REFERENCES tbFabricante(codFabricante)
 ,codFornecedor INT FOREIGN KEY REFERENCES tbFornecedor(codFornecedor)
 );
-
+GO
 CREATE TABLE tbItensVenda(
 codItensVenda INT PRIMARY KEY IDENTITY(1,1)
 ,codVenda INT FOREIGN KEY REFERENCES tbVenda(codVenda)
