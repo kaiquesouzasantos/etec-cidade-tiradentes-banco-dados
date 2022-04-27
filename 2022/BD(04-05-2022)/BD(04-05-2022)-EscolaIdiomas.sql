@@ -69,7 +69,7 @@ SELECT nomeAluno AS 'ALUNO', rgAluno AS 'RG', dataNascAluno AS 'NASCIMENTO' FROM
 INNER JOIN tbMatricula ON tbMatricula.codAluno = tbAluno.codAluno
 INNER JOIN tbTurma ON tbTurma.codTurma = tbMatricula.codTurma
 INNER JOIN tbCurso ON tbCurso.codCurso = tbTurma.codCurso
-WHERE nomeCurso IN (SELECT nomeCurso FROM tbCurso WHERE nomeCurso LIKE 'Inglês')
+WHERE nomeCurso = (SELECT nomeCurso FROM tbCurso WHERE nomeCurso LIKE 'Inglês')
 
 -- sem INNER JOIN:
 SELECT nomeAluno AS 'ALUNO', rgAluno AS 'RG', dataNascAluno AS 'NASCIMENTO' FROM tbAluno, tbCurso, tbMatricula, tbTurma
