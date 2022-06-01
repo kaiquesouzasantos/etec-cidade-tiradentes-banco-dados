@@ -22,10 +22,10 @@ SELECT [CURSO] FROM vwPreco_Baixo3 ORDER BY [CARGA_HORARIA] ASC
 -- Crie uma visão “Alunos_Turma” que exiba o curso e a quantidade de alunos por turma.​
 
 CREATE VIEW vwAlunos_Turma AS
-	SELECT nomeCurso AS 'CURSO', COUNT(tbMatricula.codMatricula) AS 'ALUNOS' FROM tbCurso
+	SELECT nomeCurso AS 'CURSO', COUNT(tbMatricula.codMatricula) AS 'ALUNOS', nomeTurma AS 'TURMA' FROM tbCurso
 		INNER JOIN tbTurma ON tbTurma.codCurso = tbCurso.codCurso
 		INNER JOIN tbMatricula ON tbMatricula.codTurma = tbTurma.codTurma
-		GROUP BY nomeCurso
+		GROUP BY nomeCurso, nomeTurma
 GO
 SELECT * FROM vwAlunos_Turma 
 
@@ -33,10 +33,7 @@ SELECT * FROM vwAlunos_Turma
 -- Exercicio 04
 -- Usando a visão “Alunos_Turma” exiba a turma com maior número de alunos.​
 
-SELECT * FROM vwAlunos_Turma WHERE [ALUNOS] = (
-	SELECT MAX(tbMatricula.codMatricula) FROM tbMatricula
-		INNER JOIN tbTurma ON tbTurma.codTurma = tbMatricula.codTurma
-)
+SELECT * FROM vwAlunos_Turma WHERE [ALUNOS] = (SELECT MAX([ALUNOS]) FROM vwAlunos_Turma)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 05
@@ -53,4 +50,4 @@ SELECT * FROM vwTurma_Curso
 -- Exercicio 06
 -- Usando a visão “Turma_Curso exiba o curso com menor número de turmas.​
 
-SELECT MIN([CURSO]) AS 'CURSO', MIN([TURMA]) AS 'TURMA' FROM vwTurma_Curso
+SELECT * FROM vwTurma_Curso WHERE [TURMA] = (SELECT MIN([TURMA]) FROM vwTurma_Curso)
