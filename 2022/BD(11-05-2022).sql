@@ -34,7 +34,7 @@ SELECT * FROM vwAlunos_Turma
 -- Usando a visão “Alunos_Turma” exiba a turma com maior número de alunos.​
 
 SELECT * FROM vwAlunos_Turma WHERE [ALUNOS] = (
-	SELECT MAX (tbMatricula.codMatricula) FROM tbMatricula
+	SELECT MAX(tbMatricula.codMatricula) FROM tbMatricula
 		INNER JOIN tbTurma ON tbTurma.codTurma = tbMatricula.codTurma
 )
 
