@@ -29,23 +29,14 @@ CREATE VIEW vwAlunos_Turma AS
 GO
 SELECT * FROM vwAlunos_Turma 
 
--- solucao alternativa:
-CREATE VIEW vwAlunos_Turma_Alternativa AS
-	SELECT nomeTurma AS 'TURMA', COUNT(tbMatricula.codMatricula) AS 'ALUNOS' FROM tbCurso
-		INNER JOIN tbTurma ON tbTurma.codCurso = tbCurso.codCurso
-		INNER JOIN tbMatricula ON tbMatricula.codTurma = tbTurma.codTurma
-		GROUP BY nomeTurma
-GO
-SELECT * FROM vwAlunos_Turma_Alternativa 
-
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 04
 -- Usando a visão “Alunos_Turma” exiba a turma com maior número de alunos.​
 
-SELECT MAX([CURSO]) AS 'CURSO', MAX([ALUNOS]) AS 'ALUNOS' FROM vwAlunos_Turma  
-
--- solucao altenativa correspondente:
-SELECT MAX([TURMA]) AS 'CURSO', MAX([ALUNOS]) AS 'ALUNOS' FROM vwAlunos_Turma_Alternativa
+SELECT * FROM vwAlunos_Turma WHERE [ALUNOS] = (
+	SELECT MAX (tbMatricula.codMatricula) FROM tbMatricula
+		INNER JOIN tbTurma ON tbTurma.codTurma = tbMatricula.codTurma
+)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 05
