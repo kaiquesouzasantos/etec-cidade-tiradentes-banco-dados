@@ -78,16 +78,16 @@ VALUES  (1,'(11) 99432-2605',1),
 		(10,'(11) 98885-9803',10)
 
 INSERT INTO tbEndereco
-VALUES	(1,'Jose Francisco Lemos','555','03026-035','Cidade Tiradentes','São Paulo','SP',1),
-		(2,'Jose Lemos Alberto','333','55555-035','Vila Formosa','São Paulo','SP',2),
-		(3,'Av.Paulista','123','03026-999','Jardins','São Paulo','SP',3),
-		(4,'Jose Francisco Lemos','555','03026-035','Cidade Tiradentes','São Paulo','SP',4),
-		(5,'Jose Lemos Alberto','333','55555-035','Vila Formosa','São Paulo','SP',5),
-		(6,'Av.Paulista','123','03026-999','Jardins','São Paulo','SP',6),
-		(7,'Jose Francisco Lemos','555','03026-035','Cidade Tiradentes','São Paulo','SP',7),
-		(8,'Jose Lemos Alberto','333','55555-035','Vila Formosa','São Paulo','SP',8),
-		(9,'Av.Paulista','123','03026-999','Jardins','São Paulo','SP',9),
-		(10,'Jose Francisco Lemos','555','03026-035','Cidade Tiradentes','São Paulo','SP',10)
+VALUES	(1,'Jose Francisco Lemos','555','03026-035','Cidade Tiradentes','SÃ£o Paulo','SP',1),
+		(2,'Jose Lemos Alberto','333','55555-035','Vila Formosa','SÃ£o Paulo','SP',2),
+		(3,'Av.Paulista','123','03026-999','Jardins','SÃ£o Paulo','SP',3),
+		(4,'Jose Francisco Lemos','555','03026-035','Cidade Tiradentes','SÃ£o Paulo','SP',4),
+		(5,'Jose Lemos Alberto','333','55555-035','Vila Formosa','SÃ£o Paulo','SP',5),
+		(6,'Av.Paulista','123','03026-999','Jardins','SÃ£o Paulo','SP',6),
+		(7,'Jose Francisco Lemos','555','03026-035','Cidade Tiradentes','SÃ£o Paulo','SP',7),
+		(8,'Jose Lemos Alberto','333','55555-035','Vila Formosa','SÃ£o Paulo','SP',8),
+		(9,'Av.Paulista','123','03026-999','Jardins','SÃ£o Paulo','SP',9),
+		(10,'Jose Francisco Lemos','555','03026-035','Cidade Tiradentes','SÃ£o Paulo','SP',10)
 
 INSERT INTO tbConsulta
 VALUES	(1,'2021-09-15','15:20:00',1,10),
