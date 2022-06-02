@@ -36,18 +36,18 @@ INSERT INTO tbFornecedor
 VALUES 
 	(1,'Kibon','Bruna Rubia'),
 	(2,'Nestle','Carlos Drummond'),
-	(3,'Jundi·','Fernenda Ribeiro');
+	(3,'Jundi√°','Fernenda Ribeiro');
 
 INSERT INTO	tbSorvetes
 VALUES
-	(1,'CremosÌssimo','10.00',1),
+	(1,'Cremos√≠ssimo','10.00',1),
 	(2,'Galak','20.00',2),
 	(3,'Grego','15.50',3);
 
 INSERT INTO tbFuncionario(codFuncionario,nomeFuncionario,cpfFuncionario,ruaFuncionario,numeroFuncionario,dataNascFuncionario)
 VALUES
 	(1,'Stev Jobs','123.456.789.10','California',2000,'1970-04-10'),
-	(2,'Maria Rosa','','S„o Paulo',130,'1981-05-11');
+	(2,'Maria Rosa','','S√£o Paulo',130,'1981-05-11');
 
 UPDATE tbFuncionario SET nomeFuncionario = 'Thayani Pereira',dataNascFuncionario = '1990-12-16' WHERE codFuncionario = 1;
 UPDATE tbFuncionario SET nomeFuncionario = 'Junior Santos',dataNascFuncionario = '1982-05-11' WHERE codFuncionario = 2;
