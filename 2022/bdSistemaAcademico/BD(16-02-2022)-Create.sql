@@ -2,6 +2,9 @@ CREATE DATABASE dbSistemaAcademico
 GO
 USE dbSistemaAcademico
 
+----------------------------------------------------------------------------------------------------------------------------------------------
+-- CREATE'S
+
 CREATE TABLE tbCampus(
 	idCampus INT PRIMARY KEY IDENTITY(1,1)
 	,nomeCampus VARCHAR(45) NOT NULL

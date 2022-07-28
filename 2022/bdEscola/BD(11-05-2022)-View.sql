@@ -7,7 +7,7 @@ GO
 
 CREATE VIEW vwPreco_Baixo AS 
 	SELECT codCurso AS 'ID', nomeCurso AS 'CURSO', cargaHorariaCurso AS 'CARGA_HORARIA', valorCurso AS 'VALOR' FROM tbCurso 
-	WHERE valorCurso < (SELECT AVG(valorCurso) FROM tbCurso)
+		WHERE valorCurso < (SELECT AVG(valorCurso) FROM tbCurso)
 GO
 SELECT * FROM vwPreco_Baixo
 

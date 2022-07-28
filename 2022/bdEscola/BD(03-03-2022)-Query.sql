@@ -1,6 +1,6 @@
  USE bdEscola
 
- ----------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 01 
  
 SELECT nomeAluno AS NOME,rgAluno AS RG,dataNascAluno AS NASCIMENTO FROM tbAluno WHERE naturalidadeAluno = 'SP';
@@ -29,13 +29,14 @@ SELECT nomeAluno AS NOME,dataNascAluno AS NASCIMENTO FROM tbAluno WHERE MONTH(da
 -- Exercicio 06
 
 SELECT tbAluno.codAluno AS CODIGO, tbMatricula.dataMatricula AS DATA_MATRICULA FROM tbAluno, tbMatricula 
-WHERE tbAluno.codAluno = tbMatricula.codAluno AND MONTH(tbMatricula.dataMatricula) = 5;
+    WHERE tbAluno.codAluno = tbMatricula.codAluno AND MONTH(tbMatricula.dataMatricula) = 5;
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 07
 
 SELECT tbAluno.codAluno AS CODIGO FROM tbAluno, tbMatricula, tbTurma 
-WHERE tbMatricula.codAluno = tbAluno.codAluno AND tbTurma.codTurma = tbMatricula.codTurma AND tbTurma.codCurso = 1;
+    WHERE tbMatricula.codAluno = tbAluno.codAluno 
+        AND tbTurma.codTurma = tbMatricula.codTurma AND tbTurma.codCurso = 1;
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- Exercicio 08

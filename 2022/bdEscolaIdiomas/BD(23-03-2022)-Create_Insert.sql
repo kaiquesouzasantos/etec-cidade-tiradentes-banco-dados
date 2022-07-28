@@ -1,9 +1,10 @@
 CREATE DATABASE dbEscolaIdiomas
 GO
 USE dbEscolaIdiomas
-GO
 
--- CREATS
+----------------------------------------------------------------------------------------------------------------------------------------------
+-- CREATE'S
+
 CREATE TABLE tbCurso (
 	codCurso INT PRIMARY KEY IDENTITY(1,1)
 	,nomeCurso VARCHAR(50) NOT NULL
@@ -36,7 +37,8 @@ CREATE TABLE tbMatricula (
 );
 GO
 
--- INSERTS
+----------------------------------------------------------------------------------------------------------------------------------------------
+-- INSERT'S
 
 INSERT INTO tbAluno(nomeAluno, dataNascAluno, rgAluno, naturalidadeAluno) VALUES 
 	('Paulo Santos', '2000-03-10', '82.282.122-0', 'SP')
