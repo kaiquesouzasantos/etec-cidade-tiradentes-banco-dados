@@ -1,9 +1,7 @@
-﻿USE bdEscola
-GO
+USE bdEscola
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- Exericicio 01
--- Crie uma visão “Preço_Baixo” que exiba o código, nome do curso, carga horária e o valor do curso de todos os cursos que tenha preço inferior ao preço médio.​
+-- 01) Crie uma visão “Preço_Baixo” que exiba o código, nome do curso, carga horária e o valor do curso de todos os cursos que tenha preço inferior ao preço médio.​
 
 CREATE VIEW vwPreco_Baixo AS 
 	SELECT codCurso AS 'ID', nomeCurso AS 'CURSO', cargaHorariaCurso AS 'CARGA_HORARIA', valorCurso AS 'VALOR' FROM tbCurso 
@@ -12,14 +10,12 @@ GO
 SELECT * FROM vwPreco_Baixo
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- Exercicio 02
--- Usando a visão “Preço_Baixo”, mostre todos os cursos ordenados por carga horária.​
+-- 02) Usando a visão “Preço_Baixo”, mostre todos os cursos ordenados por carga horária.​
 
-SELECT [CURSO] FROM vwPreco_Baixo3 ORDER BY [CARGA_HORARIA] ASC
+SELECT [CURSO] FROM vwPreco_Baixo ORDER BY [CARGA_HORARIA] ASC
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- Exercicico 03
--- Crie uma visão “Alunos_Turma” que exiba o curso e a quantidade de alunos por turma.​
+-- 03) Crie uma visão “Alunos_Turma” que exiba o curso e a quantidade de alunos por turma.​
 
 CREATE VIEW vwAlunos_Turma AS
 	SELECT nomeCurso AS 'CURSO', COUNT(tbMatricula.codMatricula) AS 'ALUNOS' FROM tbCurso
@@ -39,17 +35,15 @@ GO
 SELECT * FROM vwAlunos_Turma_Alternativa 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- Exercicio 04
--- Usando a visão “Alunos_Turma” exiba a turma com maior número de alunos.​
+-- 04) Usando a visão “Alunos_Turma” exiba a turma com maior número de alunos.​
 
-SELECT MAX([CURSO]) AS 'CURSO', MAX([ALUNOS]) AS 'ALUNOS' FROM vwAlunos_Turma  
+SELECT * FROM vwAlunos_Turma WHERE [ALUNOS] = (SELECT MAX([ALUNOS]) FROM vwAlunos_Turma)
 
 -- solucao altenativa correspondente:
-SELECT MAX([TURMA]) AS 'CURSO', MAX([ALUNOS]) AS 'ALUNOS' FROM vwAlunos_Turma_Alternativa
+SELECT * FROM vwAlunos_Turma_Alternativa WHERE [ALUNOS] = (SELECT MAX([ALUNOS]) FROM vwAlunos_Turma_Alternativa)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- Exercicio 05
--- Crie uma visão “Turma_Curso que exiba o curso e a quantidade de turmas.​
+-- 05) Crie uma visão “Turma_Curso que exiba o curso e a quantidade de turmas.​
 
 CREATE VIEW vwTurma_Curso AS
 	SELECT nomeCurso AS 'CURSO', COUNT(tbTurma.codTurma) AS 'TURMA' FROM tbCurso
@@ -59,7 +53,6 @@ GO
 SELECT * FROM vwTurma_Curso
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- Exercicio 06
--- Usando a visão “Turma_Curso exiba o curso com menor número de turmas.​
+-- 06) Usando a visão “Turma_Curso exiba o curso com menor número de turmas.​
 
-SELECT MIN([CURSO]) AS 'CURSO', MIN([TURMA]) AS 'TURMA' FROM vwTurma_Curso
+SELECT * FROM vwTurma_Curso WHERE [TURMA] = (SELECT MIN([TURMA]) FROM vwTurma_Curso)
