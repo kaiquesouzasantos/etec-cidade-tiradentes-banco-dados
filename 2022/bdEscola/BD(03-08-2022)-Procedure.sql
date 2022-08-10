@@ -22,20 +22,20 @@ EXEC spBusca_ALuno 2
 
 CREATE PROCEDURE sp_Insere_Aluno
 	@nomeAluno VARCHAR(50), @dataNascAluno SMALLDATETIME
-	,@rgAluno VARCHAR(15), @naturalidade VARCHAR(30)
+	,@rgAluno VARCHAR(15), @naturalidade VARCHAR(30), @cpf VARCHAR(15)
 	AS BEGIN
 		IF EXISTS(SELECT rgAluno FROM tbAluno WHERE rgAluno LIKE @rgAluno) BEGIN 
 			PRINT('DADO JA EXISTENTE!')
 		END
 		ELSE BEGIN
-			INSERT INTO tbAluno(nomeAluno, dataNascAluno, rgAluno, naturalidadeAluno)
+			INSERT INTO tbAluno(nomeAluno, dataNascAluno, rgAluno, naturalidadeAluno, cpfAluno)
 				VALUES 
-					(@nomeAluno, @dataNascAluno, @rgAluno, @naturalidade)
+					(@nomeAluno, @dataNascAluno, @rgAluno, @naturalidade, @cpf)
 			PRINT('CADASTRO EFETUADO COM SUCESSO')
 		END
 	END
 GO
-EXEC sp_Insere_Aluno 'Kaique', '03-01-2022', '15.552.478-90', 'Brasil'
+EXEC sp_Insere_Aluno 'Kaique', '03-01-2022', '15.552.478-90', 'Brasil', '669.942.230-86'
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- 3) Criar uma stored procedure Aumenta_Preco que, dados o nome do curso e um percentual, aumente o valor do curso com a porcentagem informada.
@@ -44,7 +44,7 @@ CREATE PROCEDURE spAumenta_Preco
 	@nomeCurso VARCHAR(50), @percentual DECIMAL
 	AS BEGIN
 		IF EXISTS(SELECT nomeCurso FROM tbCurso WHERE nomeCurso = @nomeCurso) BEGIN
-			UPDATE tbCurso SET valorCurso = valorCurso + valorCurso*@percentua/100 WHERE nomeCurso = @nomeCurso
+			UPDATE tbCurso SET valorCurso = valorCurso + valorCurso*@percentual/100 WHERE nomeCurso = @nomeCurso
 		END
 		ELSE BEGIN
 			PRINT('DADO INEXISTENTE!')
@@ -68,6 +68,7 @@ CREATE PROCEDURE spExibe_Turma
 	END
 GO
 EXEC spExibe_Turma '1AA'
+
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- 5) Criar uma stored procedure Exibe_AlunosdaTurma que, dado o nome da turma exiba os seus alunos.
 
@@ -87,9 +88,30 @@ GO
 EXEC spExibe_AlunosTurma '1AA'
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- 6) Criar uma stored procedure que receba o nome do curso e o nome do aluno e matricule o mesmo no curso pretendido.
+-- 6) 6-Criar uma storedprocedure para inserir alunos, verificando pelo cpfse o aluno existe ou não, e informar essa condição via mensagem;
 
-CREATE PROCEDURE sp_Insere_Matricula
+CREATE PROCEDURE sp_Insere_AlunoCPF
+	@nomeAluno VARCHAR(50), @dataNascAluno SMALLDATETIME
+	,@rgAluno VARCHAR(15), @naturalidade VARCHAR(30), @cpf VARCHAR(15)
+	AS BEGIN
+		IF EXISTS(SELECT cpfAluno FROM tbAluno WHERE cpfAluno LIKE @cpf) BEGIN 
+			PRINT('DADO JA EXISTENTE!')
+		END
+		ELSE BEGIN
+			INSERT INTO tbAluno(nomeAluno, dataNascAluno, rgAluno, naturalidadeAluno, cpfAluno)
+				VALUES 
+					(@nomeAluno, @dataNascAluno, @rgAluno, @naturalidade, @cpf)
+			PRINT('CADASTRO EFETUADO COM SUCESSO')
+		END
+	END
+GO
+
+EXEC sp_Insere_AlunoCPF 'Kaique', '03-01-2022', '15.552.478-90', 'Brasil', '664.942.230-86'
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+-- 7) Criar uma stored procedure que receba o nome do curso e o nome do aluno e matricule o mesmo no curso pretendido.
+
+CREATE PROCEDURE sp_InsereMatricula
 	@nomeCurso VARCHAR(50), @nomeAluno VARCHAR(50)
 	AS BEGIN
 		IF EXISTS(SELECT nomeCurso, nomeAluno FROM tbCurso, tbAluno WHERE nomeCurso = @nomeCurso AND nomeAluno LIKE @nomeAluno) BEGIN
@@ -100,11 +122,11 @@ CREATE PROCEDURE sp_Insere_Matricula
 				SELECT MAX(codTurma) FROM tbTurma
 					INNER JOIN tbCurso ON tbCurso.codCurso = tbTurma.codCurso
 					WHERE nomeCurso LIKE @nomeCurso
-			)
+			);
 
 			SET @codAluno = (
 				SELECT codAluno FROM tbAluno WHERE nomeAluno LIKE @nomeAluno
-			)
+			);
 
 			INSERT INTO tbMatricula(dataMatricula, codAluno, codTurma) VALUES
 				(GETDATE(), @codAluno, @codTurma)
@@ -114,4 +136,4 @@ CREATE PROCEDURE sp_Insere_Matricula
 		END
 	END
 GO
-EXEC sp_Insere_Matricula 'Inglês', 'Kaique'
+EXEC sp_InsereMatricula 'Inglês', 'Kaique'
