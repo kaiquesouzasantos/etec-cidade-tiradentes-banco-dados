@@ -45,6 +45,7 @@ CREATE PROCEDURE spAumenta_Preco
 	AS BEGIN
 		IF EXISTS(SELECT nomeCurso FROM tbCurso WHERE nomeCurso = @nomeCurso) BEGIN
 			UPDATE tbCurso SET valorCurso = valorCurso + valorCurso*@percentual/100 WHERE nomeCurso = @nomeCurso
+			PRINT('PRECO ATUALIZADO!')
 		END
 		ELSE BEGIN
 			PRINT('DADO INEXISTENTE!')
