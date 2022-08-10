@@ -10,6 +10,7 @@ CREATE TABLE tbAluno (
 	,nomeAluno VARCHAR(50) NOT NULL
 	,dataNascAluno SMALLDATETIME NOT NULL
 	,rgAluno VARCHAR(15) NOT NULL
+	,cpfAluno VARCHAR(15) NOT NULL
 	,naturalidadeAluno VARCHAR(30) NOT NULL
 );
 
@@ -45,12 +46,12 @@ INSERT INTO tbCurso(nomeCurso,cargaHorariaCurso,valorCurso) VALUES
 	,('Alemão',3000,'478.00');
 GO
 
-INSERT INTO tbAluno(nomeAluno,dataNascAluno,rgAluno,naturalidadeAluno) VALUES
-	('Paulo Santos', '2000-10-03 00:00:00', '82.292.122-0', 'SP')
-	,('Maria da Gloria', '1999-03-10 00:00:00', '45.233.123-0', 'SP')
-	,('Perla Nogueira Silva', '1998-04-04 00:00:00', '23.533.211-9', 'SP')
-	,('Gilson Barros Silva', '1995-09-09 00:00:00', '34.221.111-x', 'PE')
-	,('Mariana Barbosa Santos', '2001-10-10 00:00:00', '54.222.122-9', 'RJ');
+INSERT INTO tbAluno(nomeAluno,dataNascAluno,rgAluno,naturalidadeAluno, cpfAluno) VALUES
+	('Paulo Santos', '2000-10-03 00:00:00', '82.292.122-0', 'SP', '417.217.790-51')
+	,('Maria da Gloria', '1999-03-10 00:00:00', '45.233.123-0', 'SP', '803.682.750-60')
+	,('Perla Nogueira Silva', '1998-04-04 00:00:00', '23.533.211-9', 'SP', '633.482.290-06')
+	,('Gilson Barros Silva', '1995-09-09 00:00:00', '34.221.111-x', 'PE', '824.162.010-18')
+	,('Mariana Barbosa Santos', '2001-10-10 00:00:00', '54.222.122-9', 'RJ', '669.942.230-86');
 GO
 
 INSERT INTO tbTurma(nomeTurma, codCurso, horarioTurma) VALUES
