@@ -112,29 +112,31 @@ EXEC sp_Insere_AlunoCPF 'Kaique', '03-01-2022', '15.552.478-90', 'Brasil', '664.
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- 7) Criar uma stored procedure que receba o nome do curso e o nome do aluno e matricule o mesmo no curso pretendido.
 
-CREATE PROCEDURE sp_InsereMatricula
+CREATE PROCEDURE sp_InsereMatricula3
 	@nomeCurso VARCHAR(50), @nomeAluno VARCHAR(50)
 	AS BEGIN
-		IF EXISTS(SELECT nomeCurso, nomeAluno FROM tbCurso, tbAluno WHERE nomeCurso = @nomeCurso AND nomeAluno LIKE @nomeAluno) BEGIN
-			DECLARE @codTurma INT
-			DECLARE @codAluno INT
+		IF EXISTS(SELECT nomeCurso FROM tbCurso WHERE nomeCurso = @nomeCurso) BEGIN
+			IF EXISTS(SELECT nomeAluno FROM tbAluno WHERE nomeAluno = @nomeAluno) BEGIN
+				DECLARE @codTurma INT
+				DECLARE @codAluno INT
 
-			SET @codTurma = (
-				SELECT MAX(codTurma) FROM tbTurma
-					INNER JOIN tbCurso ON tbCurso.codCurso = tbTurma.codCurso
-					WHERE nomeCurso LIKE @nomeCurso
-			);
+				SET @codTurma = (
+					SELECT MAX(codTurma) FROM tbTurma
+						INNER JOIN tbCurso ON tbCurso.codCurso = tbTurma.codCurso
+						WHERE nomeCurso LIKE @nomeCurso
+				);
 
-			SET @codAluno = (
-				SELECT codAluno FROM tbAluno WHERE nomeAluno LIKE @nomeAluno
-			);
+				SET @codAluno = (
+					SELECT codAluno FROM tbAluno WHERE nomeAluno LIKE @nomeAluno
+				);
 
-			INSERT INTO tbMatricula(dataMatricula, codAluno, codTurma) VALUES
-				(GETDATE(), @codAluno, @codTurma)
+				INSERT INTO tbMatricula(dataMatricula, codAluno, codTurma) VALUES
+					(GETDATE(), @codAluno, @codTurma)
+			END
 		END
 		ELSE BEGIN
 			PRINT('PARAMETROS INVALIDOS!')
 		END
 	END
 GO
-EXEC sp_InsereMatricula 'Inglês', 'Kaique'
+EXEC sp_InsereMatricula3 'Inglês', 'Kaique'
