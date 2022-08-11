@@ -116,10 +116,10 @@ CREATE PROCEDURE spInsere_Matricula
 	@nomeCurso VARCHAR(50), @nomeAluno VARCHAR(50)
 	AS BEGIN
         IF EXISTS(
-		    SELECT nomeAluno, nomeCurso FROM tbAluno, tbCurso
-				WHERE nomeAluno LIKE @nomeAluno 
-					AND nomeCurso LIKE @nomeCurso 
-		) BEGIN
+		SELECT nomeAluno, nomeCurso FROM tbAluno, tbCurso
+			WHERE nomeAluno LIKE @nomeAluno 
+				AND nomeCurso LIKE @nomeCurso 
+	) BEGIN
             DECLARE @codTurma INT
             DECLARE @codAluno INT				
             DECLARE @nomeTurma VARCHAR(15)
@@ -141,14 +141,14 @@ CREATE PROCEDURE spInsere_Matricula
                     (GETDATE(), @codAluno, @codTurma)                
 
                 PRINT('ALUNO MATRICULADO COM SUCESSO NA TURMA '+@nomeTurma)
-			END
-			ELSE BEGIN
-				PRINT('ARGUMENTOS INVALIDOS!')
-			END
-		END
-		ELSE BEGIN
-			PRINT('ARGUMENTOS INVALIDOS!')
-		END
+	    END
+	    ELSE BEGIN
+		PRINT('ARGUMENTOS INVALIDOS!')
+	    END
 	END
+	ELSE BEGIN
+            PRINT('ARGUMENTOS INVALIDOS!')
+	END
+    END
 GO
 EXEC spInsere_Matricula 'Alemão', 'Danone'
