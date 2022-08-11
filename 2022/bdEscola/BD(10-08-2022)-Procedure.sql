@@ -134,8 +134,8 @@ CREATE PROCEDURE spInsere_Matricula
                 SELECT codAluno FROM tbAluno WHERE nomeAluno LIKE @nomeAluno
             );
 
-            SET @nomeTurma = (SELECT nomeTurma FROM tbTurma WHERE codTurma = @codTurma);
-	    
+            SET @nomeTurma = (SELECT nomeTurma FROM tbTurma WHERE codTurma = @codTurma)
+
             IF NOT EXISTS(SELECT codAluno FROM tbMatricula 
 				WHERE codAluno = @codAluno AND codTurma = @codTurma
 			) BEGIN
@@ -153,4 +153,4 @@ CREATE PROCEDURE spInsere_Matricula
 		END
 	END
 GO
-EXEC spInsere_Matricula 'Alemão', 'Danone'
+EXEC spInsere_Matricula 'Inglês', 'Danone'
