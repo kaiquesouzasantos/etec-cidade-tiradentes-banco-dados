@@ -1,4 +1,4 @@
-﻿USE bdEscola
+USE bdEscola
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
  -- 1) Criar uma stored procedure �Busca_Aluno� que receba o c�digo do aluno e retorne seu nome e data de nascimento.
@@ -111,36 +111,40 @@ EXEC spInsere_AlunoCPF 'Thay', '03-01-2022', '15.552.478-90', 'Brasil', '664.942
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- 7) Criar uma stored procedure que receba o nome do curso e o nome do aluno e matricule o mesmo no curso pretendido.
+
 CREATE PROCEDURE spInsere_Matricula
 	@nomeCurso VARCHAR(50), @nomeAluno VARCHAR(50)
 	AS BEGIN
-		DECLARE @codTurma INT
-		DECLARE @codAluno INT				
-		DECLARE @nomeTurma VARCHAR(15)
-
-		SET @codTurma = (
-			SELECT MAX(codTurma) FROM tbTurma
-				INNER JOIN tbCurso ON tbCurso.codCurso = tbTurma.codCurso
-				WHERE nomeCurso LIKE @nomeCurso
-		);
-
-		SET @codAluno = (
-			SELECT codAluno FROM tbAluno WHERE nomeAluno LIKE @nomeAluno
-		);
-
-		IF EXISTS(
-			SELECT nomeAluno, nomeCurso FROM tbAluno, tbCurso
+        IF EXISTS(
+		    SELECT nomeAluno, nomeCurso FROM tbAluno, tbCurso
 				WHERE nomeAluno LIKE @nomeAluno 
 					AND nomeCurso LIKE @nomeCurso 
-		) AND NOT EXISTS(
-			SELECT codAluno FROM tbMatricula WHERE codAluno = @codAluno
 		) BEGIN
-			INSERT INTO tbMatricula(dataMatricula, codAluno, codTurma) VALUES
-				(GETDATE(), @codAluno, @codTurma)
+            DECLARE @codTurma INT
+            DECLARE @codAluno INT				
+            DECLARE @nomeTurma VARCHAR(15)
 
-			SET @nomeTurma = (SELECT nomeTurma FROM tbTurma WHERE codTurma = @codTurma)
+            SET @codTurma = (
+                SELECT MAX(codTurma) FROM tbTurma
+                    INNER JOIN tbCurso ON tbCurso.codCurso = tbTurma.codCurso
+                    WHERE nomeCurso LIKE @nomeCurso
+            );
 
-			PRINT('ALUNO MATRICULADO COM SUCESSO NA TURMA '+@nomeTurma)
+            SET @codAluno = (
+                SELECT codAluno FROM tbAluno WHERE nomeAluno LIKE @nomeAluno
+            );
+
+            SET @nomeTurma = (SELECT nomeTurma FROM tbTurma WHERE codTurma = @codTurma)
+
+            IF NOT EXISTS(SELECT codAluno FROM tbMatricula WHERE codAluno = @codAluno) BEGIN
+                INSERT INTO tbMatricula(dataMatricula, codAluno, codTurma) VALUES
+                    (GETDATE(), @codAluno, @codTurma)                
+
+                PRINT('ALUNO MATRICULADO COM SUCESSO NA TURMA '+@nomeTurma)
+			END
+			ELSE BEGIN
+				PRINT('ARGUMENTOS INVALIDOS!')
+			END
 		END
 		ELSE BEGIN
 			PRINT('ARGUMENTOS INVALIDOS!')
