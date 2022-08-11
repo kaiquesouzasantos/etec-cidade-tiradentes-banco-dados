@@ -134,9 +134,11 @@ CREATE PROCEDURE spInsere_Matricula
                 SELECT codAluno FROM tbAluno WHERE nomeAluno LIKE @nomeAluno
             );
 
-            SET @nomeTurma = (SELECT nomeTurma FROM tbTurma WHERE codTurma = @codTurma)
-
-            IF NOT EXISTS(SELECT codAluno FROM tbMatricula WHERE codAluno = @codAluno) BEGIN
+            SET @nomeTurma = (SELECT nomeTurma FROM tbTurma WHERE codTurma = @codTurma);
+	    
+            IF NOT EXISTS(SELECT codAluno FROM tbMatricula 
+				WHERE codAluno = @codAluno AND codTurma = @codTurma
+			) BEGIN
                 INSERT INTO tbMatricula(dataMatricula, codAluno, codTurma) VALUES
                     (GETDATE(), @codAluno, @codTurma)                
 
