@@ -86,7 +86,7 @@ CREATE PROCEDURE spExibe_Multas
 	@placa VARCHAR(8)
 	AS BEGIN
 		IF EXISTS(SELECT placa FROM tbVeiculo WHERE placa LIKE @placa) BEGIN
-			SELECT SUM(codMulta) AS 'TOTAL DE MULTAS' FROM tbMulta
+			SELECT COUNT(codMulta) AS 'TOTAL DE MULTAS' FROM tbMulta
 				INNER JOIN tbVeiculo ON tbVeiculo.codVeiculo = tbMulta.codVeiculo
 				WHERE placa LIKE @placa
 		END
