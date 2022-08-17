@@ -3,7 +3,7 @@ USE bdEstoque
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- 1) Criar uma trigger que, ao ser feita uma venda (Insert na tabela tbItensVenda), todos os produtos vendidos tenham sua quantidade atualizada na tabela tbProduto. 
 
-CREATE TRIGGER tgAtualizaQuantidadeProduto 
+CREATE TRIGGER tgDiminuiQuantidadeProduto 
 	ON tbItensVenda AFTER INSERT 
 	AS BEGIN
 		DECLARE @codProduto INT, @quantidadeProduto INT, @quantidadeDisponivel INT
