@@ -50,3 +50,18 @@ CREATE TABLE tbItensVenda(
     ,quantidadeItensVenda INT
     ,subTotalItensVenda MONEY
 );
+
+CREATE TABLE tbEntradaProduto(
+	codEntradaProduto INT PRIMARY KEY IDENTITY(1,1)
+	,dataEntradaProduto DATE
+	,codProduto INT FOREIGN KEY REFERENCES tbProduto(codProduto)
+	,quantidadeEntradaProduto INT
+);
+
+CREATE TABLE tbSaidaProduto(
+	codSaidaProduto INT PRIMARY KEY IDENTITY(1,1)
+	,dataSaidaProduto DATE
+	,codProduto INT FOREIGN KEY REFERENCES tbProduto(codProduto)
+	,quantidadeSaidaProduto INT
+);
+GO
