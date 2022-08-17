@@ -7,10 +7,19 @@ CREATE TRIGGER tgAtualizaQuantidadeProduto
 	ON tbItensVenda AFTER INSERT 
 	AS BEGIN
 		DECLARE @codProduto INT, @quantidadeProduto INT, @quantidadeDisponivel INT
+		
+		SET @codProduto = (
+			SELECT codProduto FROM INSERTED
+		);
 
-		SET @codProduto = (SELECT codProduto FROM INSERTED);
-		SET @quantidadeProduto = (SELECT quantidadeItensVenda FROM INSERTED);
-		SET @quantidadeDisponivel = (SELECT quantidadeProduto FROM tbProduto WHERE codProduto = @codProduto);
+		SET @quantidadeProduto = (
+			SELECT quantidadeItensVenda FROM INSERTED
+		);
+
+		SET @quantidadeDisponivel = (
+			SELECT quantidadeProduto FROM tbProduto 
+				WHERE codProduto = @codProduto
+		);
 
 		IF (@quantidadeProduto <= @quantidadeDisponivel) BEGIN
 			UPDATE tbProduto SET quantidadeProduto = quantidadeProduto - @quantidadeProduto
