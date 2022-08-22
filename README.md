@@ -11,7 +11,7 @@
 - Variaveis e Conversão de Dados;
 - *DDL*: CREATE, ALTER e DROP;
 - *DML*: SELECT, INSERT, UPDATE e DELETE;
-- OPERADORES: Aritmeticos, Atribuição, Relacionais e Verificadores;
+- OPERADORES: Aritmeticos, Atribuição, Relacionais, Verificadores, Ordenação;
 - Funções de Agregação e Temporais;
 - JOINS;
 - SUBQUERY;
