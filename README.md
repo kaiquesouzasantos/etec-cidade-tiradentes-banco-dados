@@ -12,7 +12,7 @@
 - *DDL*: CREATE, ALTER e DROP;
 - *DML*: SELECT, INSERT, UPDATE e DELETE;
 - OPERADORES: Aritmeticos, Atribuição, Relacionais e Verificadores;
-- Funções de Agregação e Temporais.
+- Funções de Agregação e Temporais;
 - JOINS;
 - SUBQUERY;
 - VIEW;
