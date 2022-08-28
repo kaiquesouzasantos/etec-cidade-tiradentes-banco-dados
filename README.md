@@ -7,17 +7,20 @@
 #
 ### CONTEUDO ABORDADO
 
-- Tipos de Dados;
-- Variaveis e Conversão de Dados;
+- Tipos de Dados e Variaveis;
 - *DDL*: CREATE, ALTER e DROP;
 - *DML*: SELECT, INSERT, UPDATE e DELETE;
-- OPERADORES: Aritmeticos, Atribuição, Relacionais, Verificadores, Ordenação e Agrupamento;
-- Funções de Agregação e Temporais;
+- *Operadores*: Aritmeticos, Atribuição, Relacionais, Verificadores, Ordenação e Agrupamento;
+- *Estrutura de Decisão*: IF, ELSE, ELSE-IF, CASE;
+- *Estrutura de Repetição*: WHILE;
+- *Identificação de Exceções*: TRY, CATCH;
+- Funções de Agregação, Temporais e Conversão/Cast;
 - JOINS;
 - SUBQUERY;
 - VIEW;
 - PROCEDURE;
-- TRIGGER.
+- TRIGGER;
+- FUNCTION;
 
 #
 ### TECNOLOGIA
