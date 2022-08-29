@@ -1,5 +1,10 @@
 <h1 align=center>ETEC199-2022-BD</h1>
 
+<p align="center">
+  <img src="etec_l.png" width="500">
+</p>
+
+#
 ### SOBRE
 
 - Diretório contendo desenvolvimento dos scripts na disciplina Banco de Dados(BD) na Etec Cidade Tiradentes no periodo de 2021 á 2022.
