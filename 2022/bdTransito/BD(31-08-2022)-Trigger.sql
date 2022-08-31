@@ -2,8 +2,8 @@ USE bdTransito
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 /* 1) 
-	Criar umtrigger que ao veÌculo tomar uma multa os pontosda multa sejam  atualizados na tabela do motorista no campo pontuacaoAcumulada. 
-	Caso o motorista alcance 20 pontos informar via mensagem que o mesmo poder· ter sua habilitaÁ„o suspensa.
+	Criar umtrigger que ao ve√≠culo tomar uma multa os pontosda multa sejam  atualizados na tabela do motorista no campo pontuacaoAcumulada. 
+	Caso o motorista alcance 20 pontos informar via mensagem que o mesmo poder√° ter sua habilita√ß√£o suspensa.
 */
 
 CREATE TRIGGER tgAdicionaPontuacao 
@@ -29,7 +29,7 @@ CREATE TRIGGER tgAdicionaPontuacao
 				WHERE codMotorista = @codMotorista
 
 		IF (@pontosAcumulados + @pontosMulta) >= 20 BEGIN
-			PRINT('HABILITA«√O PODERA SER SUSPENSA POR PONTUA«√O LIMITE EXCEDIDA!')
+			PRINT('HABILITA√á√ÉO PODERA SER SUSPENSA POR PONTUA√á√ÉO LIMITE EXCEDIDA!')
 		END
 	END
 GO
