@@ -110,5 +110,6 @@ CREATE FUNCTION funcVendasMes(@codCliente INT, @mes INT)
 
 		RETURN @totalVendas;
 	END
+	
 ----------------------------------------------------------------------------------------------------------------------------------------------
 -- 4) Criar uma função que usando o bdEstoque diga se o cpf do cliente é ou não válido.
