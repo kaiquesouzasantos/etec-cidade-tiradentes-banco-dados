@@ -1,7 +1,7 @@
 USE bdEscola
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- 1) Crie uma funÁ„o que informada uma data da matrÌcula , retorne o dia da semana.
+-- 1) Crie uma fun√ß√£o que informada uma data da matr√≠cula , retorne o dia da semana.
 
 CREATE FUNCTION funcDiaSemana(@data DATE)
 	RETURNS VARCHAR(15)
@@ -26,7 +26,7 @@ CREATE FUNCTION funcDiaSemana(@data DATE)
 	END
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- 2) Crie uma funÁ„o que de acordo com a carga hor·ria do curso exiba curso r·pido ou curso extenso. (R·pido menos de 1000 horas).
+-- 2) Crie uma fun√ß√£o que de acordo com a carga hor√°ria do curso exiba curso r√°pido ou curso extenso. (R√°pido menos de 1000 horas).
 
 CREATE FUNCTION funcVelocidadeCurso(@cargaHoraria INT)
 	RETURNS VARCHAR(15)
@@ -44,7 +44,7 @@ CREATE FUNCTION funcVelocidadeCurso(@cargaHoraria INT)
 	END
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- 3) Crie uma funÁ„o que de acordo com o valor do curso exiba  curso caro ou curso barato. (Curso caro acima de 400).
+-- 3) Crie uma fun√ß√£o que de acordo com o valor do curso exiba  curso caro ou curso barato. (Curso caro acima de 400).
 
 CREATE FUNCTION funcValorCurso(@valorCurso INT)
 	RETURNS VARCHAR(15)
@@ -62,7 +62,7 @@ CREATE FUNCTION funcValorCurso(@valorCurso INT)
 	END
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- 4) Criar uma funÁ„o que informada a data da matrÌcula converta-a no formato dd/mm/aaaa.
+-- 4) Criar uma fun√ß√£o que informada a data da matr√≠cula converta-a no formato dd/mm/aaaa.
 
 CREATE FUNCTION funcFormataData(@dataMatricula DATE)
 	RETURNS VARCHAR(10)
@@ -74,5 +74,3 @@ CREATE FUNCTION funcFormataData(@dataMatricula DATE)
 			CAST(DATEPART(YEAR, @dataMatricula) AS VARCHAR(4))
 		RETURN @dataFormatada
 	END
-
-SELECT mina = dbo.funcFormataData('2022-10-19')
