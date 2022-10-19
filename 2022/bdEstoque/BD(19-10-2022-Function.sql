@@ -96,19 +96,14 @@ CREATE FUNCTION funcVendasMes(@codCliente INT, @mes INT)
 			SET @totalVendas = '0';
 		END
 		ELSE BEGIN
-			IF EXISTS(
-				SELECT dataVenda FROM tbVenda 
-					WHERE codCliente = @codCliente AND
-						DATEPART(MONTH, dataVenda) = @mes
-			) BEGIN
-				SET @totalVendas = (
+			SET @totalVendas = (
 					SELECT SUM(valorTotalVenda) FROM tbVenda
 						WHERE 
 							codCliente = @codCliente AND
 							DATEPART(MONTH, dataVenda) = @mes
 				);
-			END
-			ELSE BEGIN
+
+			IF(@totalVendas IS NULL) BEGIN
 				SET @totalVendas = '0';
 			END
 		END
