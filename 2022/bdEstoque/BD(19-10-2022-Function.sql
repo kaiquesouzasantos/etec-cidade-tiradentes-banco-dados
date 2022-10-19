@@ -1,7 +1,7 @@
 USE bdEstoque
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- 1) Criar uma funÁ„o que retorne o dia de semana da venda (no formato segunda, terÁa, etc) ao lado do cÛdigo da venda, valor total da venda e sua data.
+-- 1) Criar uma fun√ß√£o que retorne o dia de semana da venda (no formato segunda, ter√ßa, etc) ao lado do c√≥digo da venda, valor total da venda e sua data.
 
 CREATE FUNCTION funcDiaSemanaCodValor(@codVenda INT)
 	RETURNS VARCHAR(120)
@@ -67,7 +67,7 @@ CREATE FUNCTION funcDiaSemana(@data DATE)
 	END
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- 2) Criar uma funÁ„o que receba o cÛdigo do cliente e retorne o total de vendas que o cliente j· realizou.
+-- 2) Criar uma fun√ß√£o que receba o c√≥digo do cliente e retorne o total de vendas que o cliente j√° realizou.
 
 CREATE FUNCTION funcVendasCliente(@codCliente INT)
 	RETURNS INT
@@ -85,4 +85,35 @@ CREATE FUNCTION funcVendasCliente(@codCliente INT)
 	END
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- 3) Criar uma funÁ„o que usando o bdEstoque diga se o cpf do cliente È ou n„o v·lido.
+-- 3) Criar uma fun√ß√£o que receba o c√≥digo de um vendedor(cliente) e o m√™s e informe o total de vendas no m√™s informado
+
+CREATE FUNCTION funcVendasMes(@codCliente INT, @mes INT)
+	RETURNS MONEY
+	AS BEGIN
+		DECLARE @totalVendas MONEY
+
+		IF NOT EXISTS(SELECT codCliente FROM tbCliente WHERE codCliente = @codCliente) BEGIN
+			SET @totalVendas = '0';
+		END
+		ELSE BEGIN
+			IF EXISTS(
+				SELECT dataVenda FROM tbVenda 
+					WHERE codCliente = @codCliente AND
+						DATEPART(MONTH, dataVenda) = @mes
+			) BEGIN
+				SET @totalVendas = (
+					SELECT SUM(valorTotalVenda) FROM tbVenda
+						WHERE 
+							codCliente = @codCliente AND
+							DATEPART(MONTH, dataVenda) = @mes
+				);
+			END
+			ELSE BEGIN
+				SET @totalVendas = '0';
+			END
+		END
+
+		RETURN @totalVendas;
+	END
+----------------------------------------------------------------------------------------------------------------------------------------------
+-- 4) Criar uma fun√ß√£o que usando o bdEstoque diga se o cpf do cliente √© ou n√£o v√°lido.
