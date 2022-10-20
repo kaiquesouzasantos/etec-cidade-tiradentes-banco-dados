@@ -131,7 +131,8 @@ CREATE FUNCTION funcValidaCPF(@Nr_Documento VARCHAR(11))
 
 		-- Remove os números que funcionam como validação para CPF, pois eles "passam" pela regra de validação
 		IF (@Nr_Documento_Aux IN ('00000000000', '11111111111', '22222222222', '33333333333', '44444444444', '55555555555', '66666666666', '77777777777', '88888888888', '99999999999', '12345678909'))
-			RETURN 0
+			SET @Resposta = 'INVALIDO'
+
 
 		-- Verifica se possui apenas 11 caracteres
 		IF (LEN(@Nr_Documento_Aux) <> 11) BEGIN
