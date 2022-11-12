@@ -38,6 +38,8 @@ CREATE TABLE tbDisciplina(
 	,cargaHorariaDisciplina INT NOT NULL
 ); 
 
+GO
+
 CREATE TABLE tbTurma(
 	idTurma INT PRIMARY KEY IDENTITY(1,1)
 	,descricaoTurma VARCHAR(30) NOT NULL
@@ -47,6 +49,7 @@ CREATE TABLE tbTurma(
 	,numeroAlunos INT
 	,dtConclusao SMALLDATETIME
 );
+GO
 
 CREATE TABLE tbMatricula(
 	idMatricula INT PRIMARY KEY IDENTITY(1,1)
@@ -54,6 +57,7 @@ CREATE TABLE tbMatricula(
 	,idAluno INT FOREIGN KEY REFERENCES tbAluno(idAluno)
 	,idTurma INT FOREIGN KEY REFERENCES tbTurma(idTurma)
 );
+GO
 
 CREATE TABLE tbAtribuicao(
 	idAtribuicao INT PRIMARY KEY IDENTITY(1,1)
@@ -62,3 +66,4 @@ CREATE TABLE tbAtribuicao(
 	,idTurma INT FOREIGN KEY REFERENCES tbTurma(idTurma)
 	,idDisciplina INT FOREIGN KEY REFERENCES tbDisciplina(idDisciplina)
 );
+GO
