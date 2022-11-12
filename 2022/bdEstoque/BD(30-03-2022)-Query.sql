@@ -1,7 +1,7 @@
 USE bdEstoque
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- exercicio 01
+-- 01) Cadastrar três novos fornecedores via query;
 
 INSERT INTO tbFornecedor(nomeFornecedor)
 VALUES 
@@ -10,13 +10,13 @@ VALUES
 	,('Heineken');
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- exercicio 02
+-- 02) Fazer uma consulta utilizando o nome do fornecedor e a descrição dos produtos que cada fornecedor fornece;
 
 SELECT tbFornecedor.nomeFornecedor AS 'FORNECEDOR', tbProduto.descricaoProduto AS 'DESC' FROM tbFornecedor 
 	INNER JOIN tbProduto ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- exercicio 03
+-- 03) Criar uma instrução utilizando left join e outra utilizando right join para exibir todos os fornecedores, incluindo ainda os três novos fornecedores para os quais não foram registrados novos produtos;
 
 SELECT tbFornecedor.nomeFornecedor AS 'FORNECEDOR', tbProduto.descricaoProduto AS 'DESC' FROM tbFornecedor 
 	LEFT JOIN tbProduto ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
@@ -31,7 +31,7 @@ SELECT tbFornecedor.nomeFornecedor AS 'FORNECEDOR', tbProduto.descricaoProduto A
 	RIGHT OUTER JOIN tbFornecedor ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- exercicio 04
+-- 04) Cadastrar três novos produtos deixando para eles o código do fornecedor em branco;
 
 INSERT INTO tbProduto(descricaoProduto, valorProduto, quantidadeProduto)
 VALUES 
@@ -40,7 +40,7 @@ VALUES
 	,('Cerveja 600ml', 10.5, 28111);
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- exercicio 05
+-- 05) Criar um select utilizando a instrução full join exibindo assim todos os fornecedores, inclusive aqueles para os quais não foram atribuídos produtos, e aqueles produtos para os quais não foram atribuídos fornecedores;
 
 SELECT tbFornecedor.nomeFornecedor AS 'FORNECEDOR',  tbProduto.descricaoProduto AS 'PRODUTO' FROM tbFornecedor
 	FULL JOIN tbProduto ON tbProduto.codFornecedor = tbFornecedor.codFornecedor
@@ -49,7 +49,7 @@ SELECT tbProduto.descricaoProduto AS 'PRODUTO', tbFornecedor.nomeFornecedor AS '
 	CROSS JOIN tbFornecedor 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
--- exercicio 06
+-- 06) Criar um select com a instrução cross join entre fornecedor e produto.
 
 SELECT tbFornecedor.nomeFornecedor, tbProduto.descricaoProduto FROM tbProduto 
 	CROSS JOIN tbFornecedor
