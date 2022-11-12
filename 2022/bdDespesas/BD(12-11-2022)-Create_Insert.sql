@@ -21,8 +21,9 @@ CREATE TABLE tbErros (
 -- INSERT's
 
 INSERT INTO tbDespesas
-VALUES ('Janeiro', 'Transporte', 74),
-       ('Janeiro', 'Supermercado', 235),
+VALUES 
+	   ('Janeiro', 'Transporte', 74),
+	   ('Janeiro', 'Supermercado', 235),
 	   ('Janeiro', 'Despesas domesticas', 175),
 	   ('Janeiro', 'Entretenimento', 100),
 	   ('Fevereiro', 'Transporte', 115),
