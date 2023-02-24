@@ -29,7 +29,7 @@
 
 #
 ### TECNOLOGIA
-- [SQL Server]()
+![MICROSOFT_SQL SERVER](https://img.shields.io/badge/sql_server-0D1117?style=for-the-badge&logo=microsoft-sql-server&labelColor=0D1117)&nbsp;
 
 #
 ### CONTRIBUIÇÃO
