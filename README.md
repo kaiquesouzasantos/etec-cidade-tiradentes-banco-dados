@@ -5,12 +5,12 @@
 </p>
 
 #
-### SOBRE
+### 📚 SOBRE
 
 - Diretório contendo desenvolvimento dos scripts na disciplina Banco de Dados(BD) na Etec Cidade Tiradentes no periodo de 2021 á 2022.
 
 #
-### CONTEUDO ABORDADO
+### ⭐ CONTEUDO ABORDADO
 
 - Tipos de Dados e Variaveis;
 - *DDL*: CREATE, ALTER e DROP;
@@ -28,11 +28,11 @@
 - FUNCTION;
 
 #
-### TECNOLOGIA
+### 💻 TECNOLOGIA
 ![MICROSOFT_SQL SERVER](https://img.shields.io/badge/sql_server-0D1117?style=for-the-badge&logo=microsoft-sql-server&labelColor=0D1117)&nbsp;
 
 #
-### CONTRIBUIÇÃO
+### 🔗 CONTRIBUIÇÃO
 
 ```
 $ git clone https://github.com/kaiquesouzasantos/etec199-2022-bd.git 
