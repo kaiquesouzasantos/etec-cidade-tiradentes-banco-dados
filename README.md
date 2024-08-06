@@ -1,4 +1,4 @@
-<h1 align=center>ETEC199-2022-BD</h1>
+<h1 align=center>🌇 ETEC CIDADE TIRADENTES - BANCO DE DADOS</h1>
 
 <p align="center">
   <img src="etec_l.png" width="500">
@@ -35,5 +35,5 @@
 ### 🔗 CONTRIBUIÇÃO
 
 ```
-$ git clone https://github.com/kaiquesouzasantos/etec199-2022-bd.git 
+$ git clone https://github.com/kaiquesouzasantos/etec-cidade-tiradentes-banco-dados.git 
 ```
